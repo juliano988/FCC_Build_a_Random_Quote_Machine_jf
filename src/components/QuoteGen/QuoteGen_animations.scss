@@ -1,0 +1,39 @@
+
+@import '../../../node_modules/bootstrap/scss/bootstrap.scss';
+
+.fade{
+    animation-name: fade;
+    animation-duration: 2s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+    animation-play-state: paused;
+  
+  @keyframes fade {
+      0% {opacity: 1;}
+      50% {opacity: 0;}
+      100% {opacity: 1;}
+  }
+}
+
+     // The number of iterations needs to be the number of img files at src/background
+     $j: 9;
+     //360/9 = 40 --> to pick colors diametrically spaced in the "hue" range of HSL
+     $k: (360/$j);
+@for $i from 0 through $j {
+  .bgImg#{$i}{
+
+      -webkit-transition-delay: 250ms;//Waiting image to loads...
+      -moz-transition-delay: 250ms;//Waiting image to loads...
+      -o-transition-delay: 250ms;//Waiting image to loads...
+      transition-delay: 250ms;//Waiting image to loads...
+      -webkit-transition-duration: 2s;
+      -moz-transition-duration: 2s;
+      -o-transition-duration: 2s;
+      transition-duration: 2s;
+      -webkit-transition-property: background-image , background-color;
+      -moz-transition-property: background-image , background-color;
+      -o-transition-property: background-image , background-color;
+      transition-property: background-image , background-color;
+      background-color: hsl($i*$k, 70%, 50%);
+  }
+}
